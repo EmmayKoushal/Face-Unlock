@@ -26,15 +26,9 @@ def openwebcam():
     cap = cv2.VideoCapture(0)
     while True:
         isTrue, frameS = cap.read()
-        # frameS = cv2.resize(frame, (0, 0), None, 0.25, 0.25)
         frameS = cv2.cvtColor(frameS, cv2.COLOR_BGR2RGB)
-        # cv2.imshow('video', frameS)
-        #  time.sleep(10)
-        # frameLoc = face_recognition.face_locations(frameS)[0]
         frameEncode = face_recognition.face_encodings(frameS)[0]
         results = face_recognition.compare_faces([encode1], frameEncode)
-        # ficedis = face_recognition.face_distance([encode1], frameEncode)
-        # print(ficedis)
         if (results[0]):
             r4 = tkinter.Tk()
             r4.title("Login page")
